@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HO Kwong Yui</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="student-id">s255187</div>
+
+    <nav>
+        <a href="#growth">My Growth</a>
+        <a href="#interests">My Interests</a>
+        <a href="#goals">Life Goals</a>
+        <a href="#band">Favorite</a>
+    </nav>
+
+    <div class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <h1><span class="hi">Hi</span>, I am Ho Kwong Yui<br>and call me Morris</h1>
+                <p class="intro">I love reading and I'm cheerful. I enjoy joining group activities.</p>
+                <div class="zodiac-box">
+                    <span class="zodiac-icon">♒</span>
+                    My constellation is <strong>Aquarius</strong>
+                </div>
+            </div>
+            <div class="hero-photo">
+                <img src="profile.jpg" alt="Morris"
+                     onerror="if(this.dataset.try!=='jpeg'){this.dataset.try='jpeg';this.src='profile.jpeg';}else{this.style.display='none';this.nextElementSibling.style.display='flex';}">
+                <div class="photo-placeholder">Your Photo<br>profile.jpg</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="growth">
+        <div class="section-title">My Growth</div>
+        <div class="intro">Every stage of my education has shaped who I am today.</div>
+
+        <div class="timeline-item">
+            <div class="bg-image" style="background-image: url('secondary.jpg');"></div>
+            <div class="content">
+                <h3>Ju Ching Chu Secondary School (Kwai Chung)</h3>
+                <div class="year">Secondary Education</div>
+                <p>This is where my educational journey began. The years at Ju Ching Chu Secondary School helped build my foundation and curiosity for learning.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="bg-image" style="background-image: url('hkcc.jpg');"></div>
+            <div class="content">
+                <h3>HKCC (Hong Kong Community College)</h3>
+                <div class="year">Associate Degree</div>
+                <p>After secondary school, I continued my studies at HKCC. This period was important for developing stronger academic skills and preparing for university life.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="bg-image" style="background-image: url('hsuhk.jpg');"></div>
+            <div class="content">
+                <h3>The Hang Seng University of Hong Kong</h3>
+                <div class="year">Bachelor's Degree – Marketing (Year 3)</div>
+                <p>I am currently a Year 3 Marketing student at HSUHK. University life has given me more opportunities to grow, explore, and prepare for the future.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="interests">
+        <div class="section-title">My Interests</div>
+        <div class="timeline-item">
+            <div class="bg-image" style="background-image: url('swimming.jpg');"></div>
+            <div class="content">
+                <h3>Swimming</h3>
+                <p>My swimming journey started when my father first took me to the swimming pool. I still remember how amazed I was that a normal person could move through water like a boat. That magical feeling made me fall in love with swimming.</p>
+                <p>From primary school to secondary school, I joined the school swimming team and took part in many competitions, both inside and outside of school. Training was never easy, but every race taught me discipline, patience, and perseverance.</p>
+                <p>Even now, swimming remains one of the activities that makes me feel free and focused.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="goals">
+        <div class="section-title">Life Goals</div>
+        <div class="timeline-item">
+            <div class="bg-image" style="background-image: url('lifegoal.jpg');"></div>
+            <div class="content goal-content">
+                <p class="goal-line">I have not found the problem yet.</p>
+                <p>I still do not know exactly what my future company should solve. What I do know is that I want to keep learning useful skills, and one day use them to help society in a real way.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="band">
+        <div class="section-title">My Favourite Band</div>
+        <div class="timeline-item">
+            <div class="bg-image" style="background-image: url('band.jpg');"></div>
+            <div class="content band-content">
+                <h3>Linkin Park · Numb</h3>
+                <blockquote>
+                    I've become so numb, I can't feel you there<br>
+                    Become so tired, so much more aware<br>
+                    I'm becoming this, all I want to do<br>
+                    Is be more like me and be less like you
+                </blockquote>
+                <p>This is the part where I feel understood. Numb is my favourite song because the lyrics give me a place to share that feeling.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 HO Kwong Yui</p>
+        <p>Contact: <a href="mailto:s255187@hsu.edu.hk">s255187@hsu.edu.hk</a></p>
+    </footer>
+
+    <script>
+        const items = document.querySelectorAll('.timeline-item');
+        const sections = document.querySelectorAll('#growth, #interests, #goals, #band');
+        const links = document.querySelectorAll('nav a');
+
+        function updateBackgrounds() {
+            const triggerLine = window.innerHeight * 0.75;
+            items.forEach((item) => {
+                const rect = item.getBoundingClientRect();
+                if (rect.top < triggerLine && rect.bottom > window.innerHeight * 0.2) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            let current = '';
+            sections.forEach((section) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 120 && rect.bottom > 120) {
+                    current = section.id;
+                }
+            });
+            links.forEach((link) => {
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+            });
+        }
+
+        window.addEventListener('scroll', updateBackgrounds);
+        window.addEventListener('load', updateBackgrounds);
+        updateBackgrounds();
+    </script>
+
+</body>
+</html>
