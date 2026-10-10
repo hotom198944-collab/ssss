@@ -23,7 +23,7 @@ body {
 }
 
 nav {
-    background-color: rgba(13, 14, 17, 0.92);
+    background-color: #0D0E11;
     padding: 15px 20px;
     text-align: center;
     position: sticky;
@@ -319,14 +319,19 @@ footer a {
 
 @media (max-width: 768px) {
     .student-id {
-        top: 12px;
+        top: 58px;
         left: 12px;
-        font-size: 0.85rem;
+        font-size: 0.75rem;
+        z-index: 999;
+    }
+
+    nav {
+        padding: 12px 10px;
     }
 
     nav a {
-        margin: 0 8px;
-        font-size: 0.9rem;
+        margin: 0 6px;
+        font-size: 0.85rem;
     }
 
     .hero::after {
@@ -366,6 +371,12 @@ footer a {
     .photo-placeholder {
         width: 220px;
         height: 220px;
+    }
+
+    #interests .timeline-item,
+    #goals .timeline-item,
+    #band .timeline-item {
+        padding-top: 70px;
     }
 
     #interests .content,
