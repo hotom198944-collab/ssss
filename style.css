@@ -201,8 +201,6 @@ nav a.active {
     height: 100vh;
     width: 100%;
     overflow: hidden;
-    display: flex;
-    align-items: flex-end;
 }
 
 .bg-image {
@@ -221,88 +219,150 @@ nav a.active {
     transform: translateY(0);
 }
 
-.content {
+/* Growth: left bottom card + timeline dot */
+.growth-item {
+    display: flex;
+    align-items: flex-end;
+}
+
+.growth-item::before {
+    content: '';
+    position: absolute;
+    left: 48px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: rgba(99, 102, 241, 0.6);
+    z-index: 2;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 40px;
+    bottom: 90px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #6366F1;
+    border: 3px solid #0D0E11;
+    z-index: 3;
+}
+
+.growth-content {
     position: relative;
     z-index: 2;
-    background: rgba(26, 27, 32, 0.85);
-    padding: 30px;
-    margin: 0 20px 40px;
+    background: rgba(26, 27, 32, 0.88);
+    padding: 24px 28px;
+    margin: 0 20px 40px 80px;
     border-radius: 12px;
-    max-width: 600px;
+    max-width: 520px;
     color: #E6E8EC;
     backdrop-filter: blur(6px);
     border: 1px solid #2A2B32;
 }
 
-.content h3 {
-    font-size: 1.7rem;
-    margin-bottom: 8px;
+.growth-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
     color: #6366F1;
 }
 
-.content .year {
+.growth-content .year {
     color: #A1A1AA;
-    font-size: 0.95rem;
-    margin-bottom: 12px;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
 }
 
-#interests .timeline-item,
-#goals .timeline-item,
-#band .timeline-item {
+/* Interests: bottom bar */
+.interest-item {
+    display: flex;
+    align-items: flex-end;
+}
+
+.interest-bar {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    background: linear-gradient(to top, rgba(13,14,17,0.92), rgba(13,14,17,0.55));
+    padding: 28px 8vw 36px;
+    color: #E6E8EC;
+}
+
+.interest-bar h3 {
+    font-size: 2.6rem;
+    color: #6366F1;
+    margin-bottom: 10px;
+}
+
+.interest-bar p {
+    max-width: 760px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+/* Goals: large text overlay, no heavy card */
+.goal-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.goal-overlay {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+    margin-right: 8vw;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.7);
+}
+
+.goal-line {
+    font-size: 2.4rem;
+    line-height: 1.3;
+    margin-bottom: 16px;
+    color: #E6E8EC;
+}
+
+.goal-sub {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #E6E8EC;
+    max-width: 480px;
+}
+
+/* Band: lyrics focus, very light background */
+.band-item {
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#interests .content {
+.band-overlay {
+    position: relative;
+    z-index: 2;
     text-align: center;
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 40px;
-    font-size: 1.15rem;
-    line-height: 1.75;
+    max-width: 780px;
+    padding: 20px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.8);
 }
 
-#interests .content h3 {
-    font-size: 2.4rem;
-    margin-bottom: 25px;
-}
-
-#interests .content p {
+.band-song {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #A1A1AA;
     margin-bottom: 18px;
+    text-transform: uppercase;
 }
 
-.goal-content {
-    text-align: left;
-    max-width: 640px;
-    margin: 0 8vw 0 auto;
-    border-left: 4px solid #6366F1;
-    border-radius: 0 12px 12px 0;
-}
-
-.goal-line {
-    font-size: 2rem;
-    line-height: 1.35;
+.band-overlay blockquote {
+    font-size: 1.7rem;
+    line-height: 1.65;
+    margin-bottom: 20px;
     color: #E6E8EC;
-    margin-bottom: 18px;
 }
 
-.band-content {
-    text-align: center;
-    max-width: 760px;
-    margin: 0 auto;
-    background: rgba(13, 14, 17, 0.72);
-}
-
-.band-content h3 {
-    font-size: 1.4rem;
-    letter-spacing: 1px;
-}
-
-.band-content blockquote {
-    font-size: 1.45rem;
-    line-height: 1.7;
-    margin: 18px 0 22px;
-    color: #E6E8EC;
+.band-note {
+    font-size: 1rem;
+    color: #C8CCD4;
 }
 
 footer {
@@ -326,12 +386,12 @@ footer a {
     }
 
     nav {
-        padding: 12px 10px;
+        padding: 12px 8px;
     }
 
     nav a {
-        margin: 0 6px;
-        font-size: 0.85rem;
+        margin: 0 5px;
+        font-size: 0.82rem;
     }
 
     .hero::after {
@@ -373,22 +433,57 @@ footer a {
         height: 220px;
     }
 
-    #interests .timeline-item,
-    #goals .timeline-item,
-    #band .timeline-item {
-        padding-top: 70px;
+    .growth-item::before {
+        left: 24px;
     }
 
-    #interests .content,
-    .goal-content,
-    .band-content {
-        max-width: 90%;
-        margin: 0 auto 30px;
-        padding: 24px 18px;
+    .timeline-dot {
+        left: 16px;
+        bottom: 70px;
     }
 
-    .goal-line,
-    .band-content blockquote {
+    .growth-content {
+        margin: 0 16px 30px 48px;
+        padding: 18px;
+        max-width: none;
+    }
+
+    .interest-bar {
+        padding: 20px 20px 28px;
+    }
+
+    .interest-bar h3 {
+        font-size: 1.8rem;
+    }
+
+    .interest-bar p {
+        font-size: 0.95rem;
+    }
+
+    .goal-item {
+        justify-content: center;
+        padding: 70px 20px 30px;
+    }
+
+    .goal-overlay {
+        margin-right: 0;
+        max-width: 100%;
+    }
+
+    .goal-line {
+        font-size: 1.6rem;
+    }
+
+    .goal-sub {
+        font-size: 0.95rem;
+    }
+
+    .band-item {
+        padding: 70px 16px 30px;
+    }
+
+    .band-overlay blockquote {
         font-size: 1.15rem;
+        line-height: 1.55;
     }
 }
